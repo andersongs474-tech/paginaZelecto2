@@ -1,27 +1,63 @@
 // app/components/Team.tsx
-import { FaLinkedin } from 'react-icons/fa';
+// Se elimina la importación de 'Link' y 'FaLinkedin'
+import { FaUserCircle } from 'react-icons/fa';
 
-const TeamMember = ({ name, role, imageSrc }: { name: string, role: string, imageSrc: string }) => (
-  <div className="text-center">
-    <img src={imageSrc} alt={`Foto de ${name}`} className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-    <h4 className="font-bold text-lg">{name}</h4>
-    <p className="text-gray-600">{role}</p>
-    <a href="#" className="text-blue-600 hover:text-blue-800 text-2xl mt-2 inline-block">
-      <FaLinkedin />
-    </a>
+// El array de datos ahora solo contiene el nombre y el rol
+const teamMembers = [
+  {
+    name: 'Juan Pérez',
+    role: 'CEO & Estratega',
+  },
+  {
+    name: 'Ana García',
+    role: 'Directora de Performance',
+  },
+  {
+    name: 'Carlos Ruiz',
+    role: 'Líder de Contenido',
+  },
+];
+
+// El componente reutilizable ahora solo recibe 'name' y 'role'
+const TeamMember = ({ name, role }: { name: string; role: string }) => (
+  <div className="flex flex-col items-center text-center">
+    
+    {/* Icono de usuario */}
+    <FaUserCircle className="w-32 h-32 text-gray-300 mb-4" />
+    
+    {/* Información del miembro */}
+    <h4 className="text-xl font-bold text-gray-900">{name}</h4>
+    <p className="text-blue-600 font-semibold">{role}</p>
+
+    {/* El enlace a LinkedIn ha sido eliminado */}
   </div>
 );
 
+// Componente principal de la sección del equipo
 export default function Team() {
   return (
-    <section id="team" className="py-20 bg-white">
-      <div className="container mx-auto text-center px-4">
-        <h2 className="text-4xl font-bold">Conoce al equipo</h2>
-        <p className="text-gray-700 mt-4">Los expertos detrás de tu crecimiento.</p>
-        <div className="grid md:grid-cols-3 gap-12 mt-12">
-          <TeamMember name="Juan Pérez" role="CEO & Estratega" imageSrc="/team-member-juan.jpg" />
-          <TeamMember name="Ana García" role="Directora de Performance" imageSrc="/team-member-ana.jpg" />
-          <TeamMember name="Carlos Ruiz" role="Líder de Contenido" imageSrc="/team-member-carlos.jpg" />
+    <section id="team" className="py-20 bg-gray-50">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Encabezado de la sección */}
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Conoce al equipo
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
+            Los expertos detrás de tu crecimiento.
+          </p>
+        </div>
+
+        {/* Grid con los miembros del equipo */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8">
+          {teamMembers.map((member) => (
+            <TeamMember
+              key={member.name}
+              name={member.name}
+              role={member.role}
+            />
+          ))}
         </div>
       </div>
     </section>

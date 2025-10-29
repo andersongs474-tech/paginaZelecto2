@@ -8,6 +8,7 @@ import Results from './components/Results';
 import Team from './components/Team';
 import ContactForm from './components/ContactForm';
 import EcosystemSteps from './components/EcosystemSteps';
+import CaseStudies from './components/CaseStudies';
 
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <EcosystemSteps />
       <Services />
       <Results />
+      <CaseStudies />
       <Team />
       <ContactForm />
       {/* Puedes agregar un Footer aquí si lo necesitas */}
