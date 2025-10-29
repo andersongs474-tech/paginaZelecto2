@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Aurora from "./components/UI/Aura";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="relative min-h-screen bg-negro text-white">
+          <Aurora />
+          <Navbar />
+          <main>{children}</main> {/* Envuelve a children en un <main> es buena práctica */}
+        </div>
       </body>
     </html>
   );
