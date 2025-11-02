@@ -6,10 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiChevronUp, FiChevronDown, FiLoader } from 'react-icons/fi';
 import { InlineWidget } from 'react-calendly';
 
-// Importa la Server Action (asegúrate de que la ruta sea correcta)
 import { sendContactForm } from '../actions';
 
-// Define la estructura de cada pregunta
 interface Question {
   id: number;
   label: string;
@@ -18,7 +16,6 @@ interface Question {
   options?: string[];
 }
 
-// Lista de preguntas del formulario
 const questions: Question[] = [
   { id: 1, label: '¿Cuál es tu nombre?', name: 'nombre', type: 'text' },
   { id: 2, label: '¿Para qué compañía trabajas?', name: 'compañía', type: 'text' },
@@ -32,7 +29,6 @@ const questions: Question[] = [
   },
 ];
 
-// Variante de animación para Framer Motion
 const variants = {
   enter: { x: 100, opacity: 0 },
   center: { x: 0, opacity: 1 },
@@ -46,7 +42,6 @@ export default function ContactForm() {
 
   const currentQuestion = questions[currentStep];
 
-  // Hook para enviar el correo cuando el formulario se completa
   useEffect(() => {
     if (submissionStatus === 'submitting') {
       const submitData = async () => {
@@ -99,15 +94,23 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl flex relative">
-        <div className="absolute left-0 top-0 bottom-0 w-2 bg-verde rounded-full -translate-x-8 sm:-translate-x-16"></div>
-        <div className="w-1/2 flex items-center pr-8">
-          <h2 className="text-5xl md:text-6xl font-bold leading-tight">Trabajemos juntos</h2>
+    <section id="contact" className="min-h-screen bg-black text-white flex items-center justify-center px-5 py-16 sm:p-4">
+      {/* Contenedor principal: apilado en móvil (flex-col), lado a lado en escritorio (lg:flex-row) */}
+      <div className="w-full max-w-5xl flex flex-col lg:flex-row relative gap-y-16 lg:gap-x-16 items-center">
+        {/* Barra decorativa (oculta en pantallas muy pequeñas) */}
+        <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-2 bg-verde rounded-full -translate-x-8 sm:-translate-x-16"></div>
+        
+        {/* Columna Izquierda: Título */}
+        <div className="w-full lg:w-1/2 flex items-center lg:pr-8 text-center lg:text-left">
+          {/* Título responsivo */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">Trabajemos juntos</h2>
         </div>
         
-        <div className={`w-1/2 flex flex-col justify-between relative transition-all duration-500 ${submissionStatus === 'success' ? 'h-[700px]' : 'h-[450px]'}`}>
+        {/* Columna Derecha: Formulario */}
+        {/* Altura responsiva: min-h para el form, altura fija para el Calendly */}
+        <div className={`w-full lg:w-1/2 flex flex-col justify-between relative transition-all duration-500 ${submissionStatus === 'success' ? 'h-[550px] sm:h-[700px]' : 'min-h-[350px]'}`}>
           
+          {/* Barra de Progreso */}
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gray-700">
             <motion.div
               className="h-full bg-verde"
@@ -116,12 +119,14 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="flex-grow flex items-center overflow-hidden">
+          {/* Contenedor de Preguntas y Estados */}
+          <div className="flex-grow flex items-center overflow-hidden py-10">
             <AnimatePresence mode="wait">
               {submissionStatus === 'idle' && (
                 <motion.div key={currentStep} variants={variants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.4, type: 'tween' }} className="w-full">
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <label className="flex items-center gap-4 text-2xl text-gray-300">
+                    {/* Etiqueta de la pregunta responsiva */}
+                    <label className="flex items-center gap-3 sm:gap-4 text-xl sm:text-2xl text-gray-300">
                       <span>{currentQuestion.id}</span>
                       <FiArrowRight />
                       <span>{currentQuestion.label}</span>
@@ -129,14 +134,15 @@ export default function ContactForm() {
                     {currentQuestion.type === 'select' ? (
                       <div className="flex flex-col items-start space-y-3 pt-4">
                         {currentQuestion.options?.map((option, index) => (
-                          <button key={index} type="button" onClick={() => handleSelectChange(option)} className={`px-4 py-2 border border-gray-600 rounded-md transition-colors ${answers[currentQuestion.name] === option ? 'bg-verde text-black' : 'hover:bg-gray-800'}`}>
+                          <button key={index} type="button" onClick={() => handleSelectChange(option)} className={`px-4 py-2 border border-gray-600 rounded-md transition-colors w-full text-left ${answers[currentQuestion.name] === option ? 'bg-verde text-black' : 'hover:bg-gray-800'}`}>
                             {option}
                           </button>
                         ))}
                       </div>
                     ) : (
                       <div className="relative">
-                        <input type={currentQuestion.type} name={currentQuestion.name} value={answers[currentQuestion.name] || ''} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder="Escribe tu respuesta aquí..." className="w-full bg-transparent border-b border-gray-600 text-3xl placeholder-gray-500 py-4 focus:outline-none focus:border-verde transition-colors" autoFocus autoComplete="off" />
+                        {/* Input responsivo */}
+                        <input type={currentQuestion.type} name={currentQuestion.name} value={answers[currentQuestion.name] || ''} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder="Escribe aquí..." className="w-full bg-transparent border-b border-gray-600 text-2xl sm:text-3xl placeholder-gray-500 py-4 focus:outline-none focus:border-verde transition-colors" autoFocus autoComplete="off" />
                         <div className="flex items-center gap-4 mt-6">
                           <button type="submit" className="px-4 py-1.5 bg-verde text-black font-bold rounded-md hover:bg-black hover:text-white transition-colors cursor-pointer">OK</button>
                           <span className="text-sm text-gray-500">presiona <strong>Enter ↵</strong></span>
@@ -154,7 +160,8 @@ export default function ContactForm() {
               )}
               {submissionStatus === 'success' && (
                 <motion.div key="success" variants={variants} initial="enter" animate="center" className="text-center w-full h-full flex flex-col">
-                  <h3 className="text-3xl font-bold">¡Último paso!</h3>
+                  {/* Título de éxito responsivo */}
+                  <h3 className="text-2xl sm:text-3xl font-bold">¡Último paso!</h3>
                   <p className="text-gray-400 mt-2">Escoge una hora y un día para nuestra llamada.</p>
                   
                   <div className="mt-4 flex-grow">
@@ -167,14 +174,14 @@ export default function ContactForm() {
               )}
               {submissionStatus === 'error' && (
                  <motion.div key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full text-center">
-                   <h3 className="text-3xl font-bold text-red-500">¡Ups! Algo salió mal</h3>
+                   <h3 className="text-2xl sm:text-3xl font-bold text-red-500">¡Ups! Algo salió mal</h3>
                    <p className="text-gray-400 mt-2">No pudimos enviar tu información. Por favor, inténtalo de nuevo más tarde.</p>
                  </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Ocultamos los botones de navegación cuando ya no son necesarios */}
+          {/* Botones de Navegación */}
           {submissionStatus === 'idle' && (
             <div className="flex justify-end items-center gap-2">
               <button onClick={goToPrev} disabled={currentStep === 0} className="p-2 border border-verde text-verde rounded-md disabled:border-gray-700 disabled:text-gray-700 hover:bg-verde cursor-pointer hover:text-black transition-colors">

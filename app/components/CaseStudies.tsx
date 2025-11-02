@@ -73,9 +73,9 @@ const CaseStudies = () => {
 
         {/* Botón inferior */}
         <div className="mt-12 text-center">
-          <button className="px-8 py-3 font-semibold text-green-600 bg-white border-2 border-green-500 rounded-full transition-colors duration-300 hover:bg-green-500 hover:text-white">
+          {/* <button className="px-8 py-3 font-semibold text-green-600 bg-white border-2 border-green-500 rounded-full transition-colors duration-300 hover:bg-green-500 hover:text-white">
             Ver todos los casos
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
