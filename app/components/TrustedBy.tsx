@@ -1,18 +1,37 @@
 // app/components/TrustedBy.tsx
 import { FaBuilding, FaRegLightbulb, FaConnectdevelop, FaHubspot } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function TrustedBy() {
   return (
-    <div className="bg-black py-12">
+    <div className="bg-negro py-12">
       <div className="container mx-auto text-center">
         <h3 className="text-white text-xl mb-8">Confían en nuestro ecosistema</h3>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-           {/* Aquí puedes usar iconos o imágenes para los logos */}
+           <Image 
+            src='/fajas.png'
+            width={100}
+            height={100}
+            alt='logo claudia ramirez fajas'
+           />
            <FaBuilding className="text-gray-400 text-5xl" title="Claudia Ramirez Logo" />
            <FaRegLightbulb className="text-gray-400 text-5xl" title="Avancemos Grupo Educativo Logo" />
            <p className="text-green-400 text-3xl font-bold">+ 300k USD Invertido en Ads</p>
-           <FaConnectdevelop className="text-gray-400 text-5xl" title="Crecent Logo" />
-           <FaHubspot className="text-gray-400 text-5xl" title="Zohara Logo" />
+           
+           <Image 
+            src='/crecent.jpg'
+            width={100}
+            height={100}
+            alt='logo claudia ramirez fajas'
+            className='rounded-full'
+           />
+           <Image 
+            src='/zohara.jpg'
+            width={100}
+            height={100}
+            alt='logo claudia ramirez fajas'
+            className='rounded-full'
+           />
         </div>
       </div>
     </div>

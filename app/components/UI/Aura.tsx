@@ -8,5 +8,5 @@ const Aurora = () => {
     </div>
   );
 };
-
+// esta no va a funcionar por esabilitarla en el layout, si se desea habilitar otra vez se descomenta en el layout
 export default Aurora;

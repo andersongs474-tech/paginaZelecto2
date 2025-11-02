@@ -1,11 +1,14 @@
 // app/components/Services.tsx
-import { FaBullhorn, FaRegListAlt, FaPuzzlePiece } from 'react-icons/fa';
-import { SiMeta, SiTiktok, SiGoogleads } from 'react-icons/si';
 
-// He creado un componente interno para cada servicio para mantener el código más limpio.
+// 1. Remueve las importaciones de react-icons que ya no necesitas
+// import { FaBullhorn, FaRegListAlt, FaPuzzlePiece } from 'react-icons/fa'; 
+import { SiMeta, SiTiktok, SiGoogleads } from 'react-icons/si';
+import IconWithShapeBlur from './UI/IconWithShapeBlur';
+import LottieIcon from './UI/LottieIcon'; // 2. Importa tu nuevo componente LottieIcon
+
 const ServiceItem = ({ icon, title }: { icon: React.ReactNode, title: React.ReactNode }) => (
   <div className="flex flex-col items-center text-center">
-    <div className="bg-lime-300 rounded-full w-36 h-36 flex items-center justify-center mb-5 text-black">
+    <div className="rounded-full w-36 h-36 flex items-center justify-center mb-5 text-black">
       {icon}
     </div>
     <h4 className="font-semibold text-xl text-black">{title}</h4>
@@ -21,11 +24,26 @@ export default function Services() {
         <div className="max-w-4xl mx-auto">
           {/* --- Performance Marketing --- */}
           
-          {/* Logos de plataformas */}
           <div className="flex justify-center items-center space-x-10 md:space-x-16 mb-8">
-            <SiMeta size={120} className="text-black" />
-            <SiGoogleads size={100} className="text-black" />
-            <SiTiktok size={100} className="text-black"/>
+            {/* ... tus logos con IconWithShapeBlur se mantienen igual ... */}
+            <IconWithShapeBlur
+              className="w-[120px] h-[120px] bg-gray-900 rounded-full flex items-center justify-center"
+              shapeSize={1.5} roundness={0.5} borderSize={0.1} circleSize={0.4} circleEdge={0.6}
+            >
+              <SiMeta size={80} className="text-white" />
+            </IconWithShapeBlur>
+            <IconWithShapeBlur
+              className="w-[120px] h-[120px] bg-gray-900 rounded-full flex items-center justify-center"
+              shapeSize={1.5} roundness={0.5} borderSize={0.1} circleSize={0.4} circleEdge={0.6}
+            >
+              <SiGoogleads size={80} className="text-white" />
+            </IconWithShapeBlur>
+            <IconWithShapeBlur
+              className="w-[120px] h-[120px] bg-gray-900 rounded-full flex items-center justify-center"
+              shapeSize={1.5} roundness={0.5} borderSize={0.1} circleSize={0.4} circleEdge={0.6}
+            >
+              <SiTiktok size={80} className="text-white"/>
+            </IconWithShapeBlur>
           </div>
 
           <h3 className="text-4xl font-bold mb-4 text-black">Performance Marketing</h3>
@@ -34,24 +52,22 @@ export default function Services() {
             Gestionamos campañas con enfoque en análisis, optimización y rentabilidad, impulsando resultados medibles desde la primera inversión.
           </p>
           
-          {/* Servicios específicos con iconos */}
+          {/* 3. Reemplaza los íconos estáticos con tus LottieIcons */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-x-8">
             <ServiceItem 
-              icon={<FaBullhorn size={60} />} 
+              icon={<LottieIcon src="animations/Megaphone.lottie" className="w-24 h-24" />} 
               title={<>Gestión<br />de campañas</>}
             />
             <ServiceItem 
-              icon={<FaRegListAlt size={60} />} // Icono de bloc de notas, similar a "producción".
+              icon={<LottieIcon src="animations/SocialMediaInfluencer.lottie" className="w-24 h-24" />}
               title={<>Producción<br />de anuncios</>}
             />
             <ServiceItem 
-              icon={<FaPuzzlePiece size={60} />} // Icono de pieza de puzzle para "estrategia".
+              icon={<LottieIcon src="animations/Calendar.lottie" className="w-40 h-40" />}
               title={<>Planeación<br />estratégica</>}
             />
           </div>
         </div>
-
-        {/* Aquí puedes mantener o agregar las otras secciones de servicios si lo necesitas */}
         
       </div>
     </section>

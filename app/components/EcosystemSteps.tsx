@@ -1,9 +1,13 @@
 // app/components/EcosystemSteps.tsx
 import { FaSearch, FaDraftingCompass, FaRocket, FaSyncAlt } from 'react-icons/fa';
+import ShinyContainer from './UI/ShinyContainer';
 
 // Subcomponente para cada tarjeta de paso
 const StepCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+  <ShinyContainer 
+    speed={3}
+    className="bg-white p-6 rounded-lg shadow-md border border-gray-100 h-full"
+    >
     <div className="flex items-center mb-4">
       <div className="bg-gray-900 text-verde rounded-full p-4 mr-4 text-2xl">
         {icon}
@@ -13,7 +17,7 @@ const StepCard = ({ icon, title, description }: { icon: React.ReactNode, title: 
     <p className="text-gray-600">
       {description}
     </p>
-  </div>
+  </ShinyContainer>
 );
 
 export default function EcosystemSteps() {
