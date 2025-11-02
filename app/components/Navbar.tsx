@@ -15,11 +15,13 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center h-20">
         {/* Logo */}
         <Link href="/">
+          
             <Image
               src="/LOGO ZELECTO COLOR-02.png"
               alt="logo de zelecto color fondo negro"
               width={200}
               height={10}
+              className="w-[150px] md:w-[175px] h-auto"
               priority // Buena práctica para imágenes LCP (Largest Contentful Paint)
             />
         </Link>
