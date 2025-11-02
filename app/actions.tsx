@@ -1,19 +1,19 @@
-// app/actions.ts
-'use server'; // ¡Muy importante! Esto define que es un Server Action.
+// app/actions.tsx (¡Nota la extensión .tsx!)
+'use server';
 
 import { Resend } from 'resend';
-import { ContactFormEmail } from './emails/ContactFormEmail'; // Importa tu plantilla
+import { ContactFormEmail } from './emails/ContactFormEmail'; // Importas el componente
 
-// Instancia el cliente de Resend usando la API key del .env
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendContactForm(answers: { [key: string]: string }) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Usa el dominio verificado o el de prueba
-      to: ['zelectomarketing@gmail.com'], // El correo donde recibirás los leads
+      from: 'onboarding@resend.dev', // Cambia esto por tu dominio verificado
+      to: ['zelectomarketing@gmail.com'],
       subject: '¡Nuevo Lead! Alguien ha completado el formulario',
-      react: ContactFormEmail({ answers }), // Usa tu componente de plantilla React
+      // Ahora, con la extensión .tsx, esto funcionará sin errores.
+      react: <ContactFormEmail answers={answers} />,
     });
 
     if (error) {
