@@ -22,7 +22,7 @@ export default function HomePage() {
       <Results />
       <CaseStudies />
       <Team />
-      <ContactForm />
+      <ContactForm /> 
       
       {/* Puedes agregar un Footer aquí si lo necesitas */}
     </main>

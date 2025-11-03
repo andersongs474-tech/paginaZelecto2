@@ -38,7 +38,7 @@ export default function Navbar() {
           <a href="#results" className="hover:text-verde transition-colors">
             Testimonios
           </a>
-          <Link href="/blog" className="hover:text-verde transition-colors">
+          <Link href="/blogs" className="hover:text-verde transition-colors">
             Blog
           </Link>
         </nav>
@@ -82,7 +82,7 @@ export default function Navbar() {
             <a href="#results" className="hover:text-verde transition-colors" onClick={() => setIsMenuOpen(false)}>
               Testimonios
             </a>
-            <Link href="/blog" className="hover:text-verde transition-colors" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/blogs" className="hover:text-verde transition-colors" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
             <Button href="#contact" variant="primary" onClick={() => setIsMenuOpen(false)}>

@@ -27,4 +27,4 @@ export async function sendContactForm(answers: { [key: string]: string }) {
     console.error('Server Action Exception:', exception);
     return { success: false, error: 'Ocurrió un error inesperado.' };
   }
-}
+} 

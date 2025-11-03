@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import LottieIcon from "./components/UI/LottieIcon";
 // import Aurora from "./components/UI/Aura";
 
 
@@ -35,7 +36,12 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main> {/* Envuelve a children en un <main> es buena práctica */}
         </div>
+        
       </body>
+      {/* <LottieIcon 
+              src="animations/panda call center.lottie" 
+              className="fixed bottom-0 right-0 -translate-x-1/2 -translate-y-1/4 w-64 h-64"
+            /> */}
     </html>
   );
 }

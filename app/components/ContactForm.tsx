@@ -134,7 +134,9 @@ export default function ContactForm() {
                     {currentQuestion.type === 'select' ? (
                       <div className="flex flex-col items-start space-y-3 pt-4">
                         {currentQuestion.options?.map((option, index) => (
-                          <button key={index} type="button" onClick={() => handleSelectChange(option)} className={`px-4 py-2 border border-gray-600 rounded-md transition-colors w-full text-left ${answers[currentQuestion.name] === option ? 'bg-verde text-black' : 'hover:bg-gray-800'}`}>
+                          <button key={index} 
+                          type="button" onClick={() => handleSelectChange(option)} 
+                          className={`px-4 py-2 border border-gray-600 rounded-md transition-colors w-full text-left ${answers[currentQuestion.name] === option ? 'bg-verde text-black' : 'hover:bg-gray-800'}`}>
                             {option}
                           </button>
                         ))}
@@ -142,7 +144,13 @@ export default function ContactForm() {
                     ) : (
                       <div className="relative">
                         {/* Input responsivo */}
-                        <input type={currentQuestion.type} name={currentQuestion.name} value={answers[currentQuestion.name] || ''} onChange={handleInputChange} onKeyDown={handleKeyDown} placeholder="Escribe aquí..." className="w-full bg-transparent border-b border-gray-600 text-2xl sm:text-3xl placeholder-gray-500 py-4 focus:outline-none focus:border-verde transition-colors" autoFocus autoComplete="off" />
+                        <input type={currentQuestion.type} 
+                        name={currentQuestion.name} 
+                        value={answers[currentQuestion.name] || ''} 
+                        onChange={handleInputChange} onKeyDown={handleKeyDown} 
+                        placeholder="Escribe aquí..." 
+                        className="w-full bg-transparent border-b border-gray-600 text-2xl sm:text-3xl placeholder-gray-500 py-4 
+                        focus:outline-none focus:border-verde transition-colors" autoComplete="off" />
                         <div className="flex items-center gap-4 mt-6">
                           <button type="submit" className="px-4 py-1.5 bg-verde text-black font-bold rounded-md hover:bg-black hover:text-white transition-colors cursor-pointer">OK</button>
                           <span className="text-sm text-gray-500">presiona <strong>Enter ↵</strong></span>
