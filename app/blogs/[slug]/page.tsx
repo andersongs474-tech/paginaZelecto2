@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
   const { content, data } = matter(source);
 
   // 3. Obtenemos nuestros componentes personalizados desde mdx-components.tsx
-  const components = useMDXComponents();
+  const components = useMDXComponents({});
   
   return (
     <main className="flex min-h-screen flex-col items-center pt-32 px-4">
