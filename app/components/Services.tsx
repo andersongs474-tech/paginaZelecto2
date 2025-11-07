@@ -22,10 +22,10 @@ export default function Services() {
         <h2 className="text-5xl font-extrabold mb-12 text-black">Nuestros Servicios</h2>
         
         <div className="max-w-4xl mx-auto">
-          {/* --- Performance Marketing --- */}
+          
           
           <div className="flex justify-center items-center space-x-10 md:space-x-16 mb-8">
-            {/* ... tus logos con IconWithShapeBlur se mantienen igual ... */}
+            
             <IconWithShapeBlur
               className="w-[120px] h-[120px] bg-gray-900 rounded-full flex items-center justify-center"
               shapeSize={1.5} roundness={0.5} borderSize={0.1} circleSize={0.4} circleEdge={0.6}

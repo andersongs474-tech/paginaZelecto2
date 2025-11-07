@@ -18,7 +18,7 @@ interface Question {
 
 const questions: Question[] = [
   { id: 1, label: '¿Cuál es tu nombre?', name: 'nombre', type: 'text' },
-  { id: 2, label: '¿Para qué compañía trabajas?', name: 'compañía', type: 'text' },
+  { id: 2, label: '¿como se llama tu empresa?', name: 'compañía', type: 'text' },
   { id: 3, label: '¿Cuál es tu correo para el trabajo?', name: 'email', type: 'email' },
   {
     id: 4,
@@ -27,6 +27,7 @@ const questions: Question[] = [
     type: 'select',
     options: ['No he invertido todavía', 'Menos de $1,000 USD', '$1,000 - $5,000 USD', 'Más de $5,000 USD'],
   },
+  { id: 5, label:'Cuál es tu número de celular', name: 'phone', type: 'text'}
 ];
 
 const variants = {

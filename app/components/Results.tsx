@@ -1,12 +1,13 @@
 // app/components/Results.tsx
 import { FaBullhorn, FaRegListAlt, FaPuzzlePiece } from 'react-icons/fa';
+import LottieIcon from './UI/LottieIcon';
 
 // Componente ServiceItem con tamaños responsivos
 const ServiceItem = ({ icon, title }: { icon: React.ReactNode, title: React.ReactNode }) => (
   // El max-w-[200px] se elimina para permitir que la cuadrícula controle el tamaño.
   <div className="flex flex-col items-center text-center mx-auto">
     {/* Contenedor del ícono responsivo */}
-    <div className="bg-lime-300 rounded-full w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center mb-4 text-black">
+    <div className="bg-negro rounded-full w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center mb-4 text-verde">
       {/* Tamaño del ícono ligeramente más pequeño para el contenedor móvil */}
       {icon}
     </div>
@@ -17,7 +18,7 @@ const ServiceItem = ({ icon, title }: { icon: React.ReactNode, title: React.Reac
 
 // Componente PhonePlaceholder con tamaños responsivos
 const PhonePlaceholder = ({ className = '' }: { className?: string }) => (
-  <div className={`bg-gray-200 rounded-3xl border-4 border-gray-300 h-64 w-32 sm:h-80 sm:w-40 flex items-center justify-center ${className}`}>
+  <div className={`bg-gray-200 rounded-3xl border-4 border-negro h-64 w-32 sm:h-80 sm:w-40 flex items-center justify-center ${className}`}>
     <p className="text-gray-500 text-sm p-4 text-center">Reemplazar con imagen</p>
   </div>
 );
@@ -78,17 +79,66 @@ export default function Results() {
         </div>
         
         {/* --- Sección: Sitios Web --- */}
-        <div className="text-center max-w-4xl mx-auto">
-           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Sitios Web</h2>
-           <p className="max-w-2xl mx-auto text-gray-700 text-base mb-12">
-             Landings y E-commerce ultrarrápidos, diseñados para una sola cosa: convertir visitantes en clientes.
-           </p>
-           <div className="grid grid-cols-3 gap-y-8 sm:gap-4 max-w-3xl mx-auto">
-              <ServiceItem icon={<FaBullhorn size={40} />} title="-" />
-              <ServiceItem icon={<FaRegListAlt size={40} />} title="-" />
-              <ServiceItem icon={<FaPuzzlePiece size={40} />} title="-" />
-           </div>
-        </div>
+        <section className="py-20 px-4"> {/* Usamos <section> para semántica y añadimos padding */}
+          <div className="max-w-6xl mx-auto">
+            
+            {/* --- Fila 1: Introducción de Impacto (2 columnas) --- */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+              
+              {/* Columna Izquierda: El Texto Persuasivo */}
+              <div className="text-left">
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-black mb-6">
+                  Máquinas de Conversión, no solo Sitios Web
+                </h2>
+                <p className="text-lg text-negro leading-relaxed">
+                  Nuestra obsesión es el <strong className="text-verde">rendimiento</strong>. No solo creamos diseños atractivos; construimos experiencias digitales ultrarrápidas con <strong className="text-white">Next.js</strong> que Google y tus usuarios amarán.
+                </p>
+                <p className="mt-4 text-lg text-negro leading-relaxed">
+                  Cada proyecto se despliega en <strong className="text-verde">Vercel</strong>, garantizando una disponibilidad global y una velocidad de carga que transforma visitantes en clientes leales.
+                </p>
+              </div>
+
+              {/* Columna Derecha: El Lottie Principal */}
+              <div className="flex items-center justify-center">
+                {/* Lottie sugerido: busca 'website development', 'rocket speed', 'web analytics' */}
+                <LottieIcon src="/animations/web design.lottie" className="w-full max-w-md h-auto" />
+              </div>
+
+            </div>
+
+            {/* --- Fila 2: Grid de Características Clave --- */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              
+              {/* Item 1: Rendimiento */}
+              <div className="p-6 bg-negro border-gray-800 rounded-xl">
+                <LottieIcon src="/animations/Web Development.lottie" className="w-24 h-24 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Rendimiento Extremo con Next.js</h3>
+                <p className="text-gray-400">
+                  Sitios que cargan al instante, mejoran tu ranking en buscadores y ofrecen una experiencia de usuario impecable.
+                </p>
+              </div>
+
+              {/* Item 2: SEO */}
+              <div className="p-6 bg-negro border border-gray-800 rounded-xl">
+                <LottieIcon src="/animations/Seo Analytics Team.lottie" className="w-24 h-24 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">SEO Técnico Avanzado</h3>
+                <p className="text-gray-400">
+                  Optimizamos cada detalle, desde la semántica del HTML hasta los Core Web Vitals, para asegurar la máxima visibilidad.
+                </p>
+              </div>
+
+              {/* Item 3: Escalabilidad */}
+              <div className="relative p-6 bg-negro border border-gray-800 rounded-xl">
+                <LottieIcon src="/animations/SocialMediaInfluencer.lottie" className="w-24 h-24 mb-4" /> 
+                <h3 className="text-xl font-bold text-white mb-2">Despliegue Global en Vercel</h3>
+                <p className="text-gray-400">
+                  Tu web siempre rápida y disponible, sin importar desde qué parte del mundo te visiten tus clientes.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
       </div>
     </section>

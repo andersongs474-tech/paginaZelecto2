@@ -8,7 +8,13 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  // Opciones adicionales para MDX si las necesitas
+  options: {
+    // If you use remark-gfm, you'll need to use next.config.mjs
+    // as the package is ESM only
+    // https://github.com/remarkjs/remark-gfm#install
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
 })
 
 export default withMDX(nextConfig)

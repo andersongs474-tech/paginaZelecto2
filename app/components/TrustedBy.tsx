@@ -32,22 +32,23 @@ export default function TrustedBy() {
             />
           </div>
 
-          {/* --- Logo 2: Building Icon --- */}
-          {/* Móvil: (order-3). Desktop: tercer elemento (md:order-3). */}
-          <div className="order-3 md:order-3">
-            <FaBuilding className="text-gray-400 text-5xl" title="Placeholder Logo 1" />
-          </div>
+          
 
           {/* --- Logo 3: Lightbulb Icon --- */}
           {/* Móvil: (order-3). Desktop: cuarto elemento (md:order-4). */}
-          <div className="order-3 md:order-4">
-            <FaRegLightbulb className="text-gray-400 text-5xl" title="Avancemos Grupo Educativo Logo" />
+          <div className="order-3 md:order-3">
+            <Image
+              src='/avancemos.png'
+              width={100}
+              height={100}
+              alt='Logo de Claudia Ramirez Fajas'
+            />
           </div>
 
           {/* --- Texto Destacado "+ 300k USD..." --- */}
           {/* Móvil: es el primer elemento (order-1). */}
           {/* Desktop: es el quinto elemento (md:order-5), justo en medio de los logos. */}
-          <div className="w-full md:w-auto order-1 md:order-5">
+          <div className="w-full md:w-auto order-1 md:order-4">
             <p className="text-green-400 text-2xl md:text-3xl font-bold text-center">
               + 300k USD Invertido en Ads
             </p>
@@ -55,7 +56,7 @@ export default function TrustedBy() {
 
           {/* --- Logo 4: Crecent --- */}
           {/* Móvil: (order-3). Desktop: sexto elemento (md:order-6). */}
-          <div className="order-3 md:order-6">
+          <div className="order-3 md:order-5">
             <Image
               src='/crecent.jpg'
               width={100}

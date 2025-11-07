@@ -189,6 +189,9 @@ const ShapeBlur = ({
     document.addEventListener('pointermove', onPointerMove);
 
     const resize = () => {
+      if (!mountRef.current) {
+        return;
+      }
       const container = mountRef.current;
       w = container.clientWidth;
       h = container.clientHeight;
