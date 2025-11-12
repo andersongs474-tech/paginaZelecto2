@@ -67,9 +67,9 @@ export default function Results() {
             </div>
           </div>
           {/* Imágenes de los teléfonos */}
-          <div className="md:w-1/2 flex justify-center md:justify-start gap-4 sm:gap-6">
-            <PhonePlaceholder videoSrc="/videos/dias.mp4" /> 
+          <div className="md:w-1/2 flex justify-center md:justify-start gap-4 sm:gap-6"> 
             <PhonePlaceholder videoSrc="/videos/avancemos.mp4" />
+            <PhonePlaceholder videoSrc="/videos/finca.mp4" />
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export default function Results() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-y-10 gap-x-12">
           {/* Imágenes de los teléfonos */}
           <div className="md:w-1/2 flex justify-center md:justify-end gap-4 sm:gap-6 order-1 md:order-none">
-            <PhonePlaceholder videoSrc="/videos/finca.mp4" />
+            <PhonePlaceholder videoSrc="/videos/dias.mp4" /> 
             <PhonePlaceholder videoSrc="/videos/pestañas.mp4" />
           </div>
           {/* Contenido de texto e iconos */}
