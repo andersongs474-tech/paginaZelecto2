@@ -17,9 +17,20 @@ const ServiceItem = ({ icon, title }: { icon: React.ReactNode, title: React.Reac
 );
 
 // Componente PhonePlaceholder con tamaños responsivos
-const PhonePlaceholder = ({ className = '' }: { className?: string }) => (
-  <div className={`bg-gray-200 rounded-3xl border-4 border-negro h-64 w-32 sm:h-80 sm:w-40 flex items-center justify-center ${className}`}>
-    <p className="text-gray-500 text-sm p-4 text-center">Reemplazar con imagen</p>
+const PhonePlaceholder = ({ videoSrc, className = '' }: { videoSrc: string, className?: string }) => (
+  <div className={`bg-gray-200 relative rounded-3xl border-4 border-negro h-64 w-32 sm:h-80 sm:w-40 flex items-center justify-center ${className}`}>
+    <video
+      key={videoSrc} // Ayuda a React a reiniciar el video si la fuente cambia
+      src={videoSrc}
+      autoPlay
+      muted
+      loop
+      controls
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover rounded-2xl"
+    >
+      Tu navegador no soporta el tag de video.
+    </video>
   </div>
 );
 
@@ -49,8 +60,8 @@ export default function Results() {
           </div>
           {/* Imágenes de los teléfonos */}
           <div className="md:w-1/2 flex justify-center md:justify-start gap-4 sm:gap-6">
-            <PhonePlaceholder />
-            <PhonePlaceholder className="hidden sm:flex" />
+            <PhonePlaceholder videoSrc="/videos/avancemos.mp4" />
+            <PhonePlaceholder videoSrc="/videos/dias.mp4" /> 
           </div>
         </div>
 
@@ -58,8 +69,8 @@ export default function Results() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-y-10 gap-x-12">
           {/* Imágenes de los teléfonos */}
           <div className="md:w-1/2 flex justify-center md:justify-end gap-4 sm:gap-6 order-1 md:order-none">
-            <PhonePlaceholder />
-            <PhonePlaceholder className="hidden sm:flex" />
+            <PhonePlaceholder videoSrc="/videos/finca.MOV" />
+            <PhonePlaceholder videoSrc="/videos/pestañas.mp4" />
           </div>
           {/* Contenido de texto e iconos */}
           <div className="md:w-1/2 text-center md:text-left">
@@ -94,7 +105,7 @@ export default function Results() {
                   Nuestra obsesión es el <strong className="text-verde">rendimiento</strong>. No solo creamos diseños atractivos; construimos experiencias digitales ultrarrápidas con <strong className="text-white">Next.js</strong> que Google y tus usuarios amarán.
                 </p>
                 <p className="mt-4 text-lg text-negro leading-relaxed">
-                  Cada proyecto se despliega en <strong className="text-verde">Vercel</strong>, garantizando una disponibilidad global y una velocidad de carga que transforma visitantes en clientes leales.
+                  Cada proyecto se despliega en <strong className="text-verde">Vercel o Cloudflare pages</strong>, garantizando una disponibilidad global y una velocidad de carga que transforma visitantes en clientes leales.
                 </p>
               </div>
 

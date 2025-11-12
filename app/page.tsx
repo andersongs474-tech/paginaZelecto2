@@ -20,8 +20,8 @@ export default function HomePage() {
       <EcosystemSteps />
       <Services />
       <Results />
-      <CaseStudies />
-      <Team />
+      {/* <CaseStudies /> */}
+      {/* <Team /> */}
       <ContactForm /> 
       
       {/* Puedes agregar un Footer aquí si lo necesitas */}
