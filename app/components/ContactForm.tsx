@@ -4,7 +4,7 @@
 import React, { useState, KeyboardEvent, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiChevronUp, FiChevronDown, FiLoader } from 'react-icons/fi';
-import { InlineWidget } from 'react-calendly';
+//import { InlineWidget } from 'react-calendly';
 
 import { sendContactForm } from '../actions';
 
@@ -170,15 +170,15 @@ export default function ContactForm() {
               {submissionStatus === 'success' && (
                 <motion.div key="success" variants={variants} initial="enter" animate="center" className="text-center w-full h-full flex flex-col">
                   {/* Título de éxito responsivo */}
-                  <h3 className="text-2xl sm:text-3xl font-bold">¡Último paso!</h3>
-                  <p className="text-gray-400 mt-2">Escoge una hora y un día para nuestra llamada.</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold">¡Muchas Gracias!</h3>
+                  <p className="text-gray-400 mt-2">Te estaremos contactando muy pronto.</p>
                   
-                  <div className="mt-4 flex-grow">
+                  {/* <div className="mt-4 flex-grow">
                     <InlineWidget
                       url="https://calendly.com/zelectomarketing/30min"
                       styles={{ height: '100%', borderRadius: '8px' }}
                     />
-                  </div>
+                  </div> */}
                 </motion.div>
               )}
               {submissionStatus === 'error' && (

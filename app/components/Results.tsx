@@ -1,5 +1,6 @@
 // app/components/Results.tsx
 import { FaBullhorn, FaRegListAlt, FaPuzzlePiece } from 'react-icons/fa';
+import { IoSpeedometerOutline, IoSearchCircleOutline, IoRocketOutline } from 'react-icons/io5';
 import LottieIcon from './UI/LottieIcon';
 
 // Componente ServiceItem con tamaños responsivos
@@ -60,8 +61,8 @@ export default function Results() {
           </div>
           {/* Imágenes de los teléfonos */}
           <div className="md:w-1/2 flex justify-center md:justify-start gap-4 sm:gap-6">
-            <PhonePlaceholder videoSrc="/videos/avancemos.mp4" />
             <PhonePlaceholder videoSrc="/videos/dias.mp4" /> 
+            <PhonePlaceholder videoSrc="/videos/avancemos.mp4" />
           </div>
         </div>
 
@@ -102,11 +103,9 @@ export default function Results() {
                   Máquinas de Conversión, no solo Sitios Web
                 </h2>
                 <p className="text-lg text-negro leading-relaxed">
-                  Nuestra obsesión es el <strong className="text-verde">rendimiento</strong>. No solo creamos diseños atractivos; construimos experiencias digitales ultrarrápidas con <strong className="text-white">Next.js</strong> que Google y tus usuarios amarán.
+                  Nuestra obsesión es el <strong className="text-verde">rendimiento</strong>. No solo creamos diseños atractivos; construimos experiencias digitales ultrarrápidas con <strong className="text-verde">Next.js</strong> que enamoran a Google y a tus usuarios.
                 </p>
-                <p className="mt-4 text-lg text-negro leading-relaxed">
-                  Cada proyecto se despliega en <strong className="text-verde">Vercel o Cloudflare pages</strong>, garantizando una disponibilidad global y una velocidad de carga que transforma visitantes en clientes leales.
-                </p>
+                
               </div>
 
               {/* Columna Derecha: El Lottie Principal */}
@@ -122,7 +121,8 @@ export default function Results() {
               
               {/* Item 1: Rendimiento */}
               <div className="p-6 bg-negro border-gray-800 rounded-xl">
-                <LottieIcon src="/animations/Web Development.lottie" className="w-24 h-24 mb-4" />
+                <IoSpeedometerOutline size={60} className="text-verde mb-4" />
+                
                 <h3 className="text-xl font-bold text-white mb-2">Rendimiento Extremo con Next.js</h3>
                 <p className="text-gray-400">
                   Sitios que cargan al instante, mejoran tu ranking en buscadores y ofrecen una experiencia de usuario impecable.
@@ -131,7 +131,7 @@ export default function Results() {
 
               {/* Item 2: SEO */}
               <div className="p-6 bg-negro border border-gray-800 rounded-xl">
-                <LottieIcon src="/animations/Seo Analytics Team.lottie" className="w-24 h-24 mb-4" />
+                <IoSearchCircleOutline size={60} className="text-verde mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">SEO Técnico Avanzado</h3>
                 <p className="text-gray-400">
                   Optimizamos cada detalle, desde la semántica del HTML hasta los Core Web Vitals, para asegurar la máxima visibilidad.
@@ -140,10 +140,10 @@ export default function Results() {
 
               {/* Item 3: Escalabilidad */}
               <div className="relative p-6 bg-negro border border-gray-800 rounded-xl">
-                <LottieIcon src="/animations/SocialMediaInfluencer.lottie" className="w-24 h-24 mb-4" /> 
-                <h3 className="text-xl font-bold text-white mb-2">Despliegue Global en Vercel o Cloudflare pages</h3>
+                <IoRocketOutline size={60} className="text-verde mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">CRO (Optimización de la Tasa de Conversión)</h3>
                 <p className="text-gray-400">
-                  Tu web siempre rápida y disponible, sin importar desde qué parte del mundo te visiten tus clientes.
+                  Analizamos el comportamiento del usuario para implementar mejoras continuas que transforman visitantes en clientes.
                 </p>
               </div>
 
