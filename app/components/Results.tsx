@@ -69,7 +69,7 @@ export default function Results() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-y-10 gap-x-12">
           {/* Imágenes de los teléfonos */}
           <div className="md:w-1/2 flex justify-center md:justify-end gap-4 sm:gap-6 order-1 md:order-none">
-            <PhonePlaceholder videoSrc="/videos/finca.MOV" />
+            <PhonePlaceholder videoSrc="/videos/finca.mp4" />
             <PhonePlaceholder videoSrc="/videos/pestañas.mp4" />
           </div>
           {/* Contenido de texto e iconos */}
@@ -141,7 +141,7 @@ export default function Results() {
               {/* Item 3: Escalabilidad */}
               <div className="relative p-6 bg-negro border border-gray-800 rounded-xl">
                 <LottieIcon src="/animations/SocialMediaInfluencer.lottie" className="w-24 h-24 mb-4" /> 
-                <h3 className="text-xl font-bold text-white mb-2">Despliegue Global en Vercel</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Despliegue Global en Vercel o Cloudflare pages</h3>
                 <p className="text-gray-400">
                   Tu web siempre rápida y disponible, sin importar desde qué parte del mundo te visiten tus clientes.
                 </p>
