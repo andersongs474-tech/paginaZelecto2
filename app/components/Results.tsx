@@ -47,11 +47,18 @@ export default function Results() {
           {/* Contenido de texto e iconos */}
           <div className="md:w-1/2 text-center md:text-left">
             {/* Título responsivo */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Contenido audiovisual</h2>
-            <p className="max-w-xl mx-auto md:mx-0 text-gray-700 text-base mb-10">
-              Diseñamos estrategias publicitarias que convierten datos en crecimiento real. 
-              Gestionamos campañas con enfoque en análisis, optimización y rentabilidad, impulsando resultados medibles desde la primera inversión.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-black">Contenido audiovisual</h2>
+            <p className="max-w-xl mx-auto md:mx-0 text-gray-700 text-base mb-2">
+              Creamos piezas que <strong className="text-verde">conectan, emocionan y venden.</strong></p>
+            <p className='text-gray-700 mb-2'>
+              Unimos estrategia, producción y edición profesional para generar contenido auténtico,
+              estético y persuasivo. Desde reels hasta storytelling de marca, cada video está pensado 
+              para <strong className="text-verde">impulsar resultados reales.</strong></p>
+              
+            <p className='text-gray-700 text-center font-bold text-lg mb-10'>
+              ¡Creatividad que convierte!</p>
+              
+            
             {/* Cuadrícula responsiva: 1 columna en móvil, 3 en pantallas 'sm' y superiores */}
             <div className="grid grid-cols-3 gap-y-8 sm:gap-4">
               <ServiceItem icon={<FaBullhorn size={40} />} title={<>Creación de<br/>estrategia</>} />
