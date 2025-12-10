@@ -1,3 +1,4 @@
+// app/blogs/BlogList.tsx
 "use client";
 
 import { useState } from "react";
@@ -9,49 +10,107 @@ type Blog = {
   title: string;
   description: string;
   date: string;
+  content: string;
 };
 
 export default function BlogList({ blogs }: { blogs: Blog[] }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"default" | "newest" | "oldest">(
+    "default"
+  );
 
+  // Filter functionality: Search in Title, Description, AND Content
   const filteredBlogs = blogs.filter(
     (blog) =>
       blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog.description.toLowerCase().includes(searchQuery.toLowerCase())
+      blog.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Sort functionality
+  const sortedBlogs = [...filteredBlogs].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    if (sortOrder === "newest") {
+      return dateB - dateA;
+    } else if (sortOrder === "oldest") {
+      return dateA - dateB;
+    } else {
+      // Default: 'primer-articulo' (Core Web Vitals) pinned first, then by date descending
+      if (a.slug === "primer-articulo") return -1;
+      if (b.slug === "primer-articulo") return 1;
+      return dateB - dateA;
+    }
+  });
 
   return (
     <div className="w-full max-w-6xl">
-      {/* Search Bar */}
-      <div className="mb-12 relative max-w-xl mx-auto">
-        <input
-          type="text"
-          placeholder="Buscar artículos..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-6 py-4 bg-gray-900/80 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-verde focus:ring-1 focus:ring-verde transition-all backdrop-blur-sm"
-        />
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+      {/* Search Bar & Filter Options */}
+      <div className="mb-12 flex flex-col md:flex-row gap-4 max-w-3xl mx-auto">
+        {/* Search Input */}
+        <div className="relative flex-1">
+          <input
+            type="text"
+            placeholder="Buscar en el contenido..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-6 py-4 bg-gray-900/80 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-verde focus:ring-1 focus:ring-verde transition-all backdrop-blur-sm"
+          />
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* Sort Select */}
+        <div className="relative min-w-[200px]">
+          <select
+            value={sortOrder}
+            onChange={(e) =>
+              setSortOrder(e.target.value as "default" | "newest" | "oldest")
+            }
+            className="w-full h-full px-6 py-4 bg-gray-900/80 border border-gray-700 rounded-full text-white focus:outline-none focus:border-verde focus:ring-1 focus:ring-verde transition-all backdrop-blur-sm appearance-none cursor-pointer"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
+            <option value="default">Por defecto</option>
+            <option value="newest">Más recientes</option>
+            <option value="oldest">Más antiguos</option>
+          </select>
+          {/* Custom Arrow Icon for Select */}
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </div>
         </div>
       </div>
 
       {/* List Layout */}
       <div className="flex flex-col gap-6">
-        {filteredBlogs.map((blog) => (
+        {sortedBlogs.map((blog) => (
           <Link
             href={`/blogs/${blog.slug}`}
             key={blog.slug}
@@ -100,7 +159,7 @@ export default function BlogList({ blogs }: { blogs: Blog[] }) {
             </div>
           </Link>
         ))}
-        {filteredBlogs.length === 0 && (
+        {sortedBlogs.length === 0 && (
           <div className="text-center py-20">
             <p className="text-gray-500 text-lg">
               No encontramos artículos que coincidan con tu búsqueda.

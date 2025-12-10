@@ -17,13 +17,14 @@ function getPosts() {
     const slug = fileName.replace(/\.mdx$/, "");
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data } = matter(fileContents);
+    const { data, content } = matter(fileContents);
 
     return {
       slug,
       title: data.title || "Sin Título",
       description: data.description || "Sin Descripción",
       date: data.date || "Unknown",
+      content: content || "", // Pass content for search
     };
   });
 
