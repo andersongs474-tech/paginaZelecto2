@@ -6,11 +6,12 @@
 @theme {
   --color-negro: #111211;
   --color-verde: #b2ef43;
-  --animate-aurora-1: aurora-1 10s ease-in-out infinite;
-  --animate-aurora-2: aurora-2 12s ease-in-out infinite 3s;
-  --animate-aurora-3: 8s ease-in-out infinite 6s;
-  --animate-aurora: aurora 20s infinite linear;
-  --animate-shine: shine 1s linear infinite;
+  /* Simplified animations for better performance */
+  --animate-aurora-1: aurora-1 15s ease-in-out infinite;
+  --animate-aurora-2: aurora-2 18s ease-in-out infinite;
+  --animate-aurora-3: aurora-3 20s ease-in-out infinite;
+  --animate-aurora: aurora 30s linear infinite;
+  --animate-shine: shine 2s linear infinite;
 
   @keyframes aurora-1 {
     0%,
@@ -18,27 +19,27 @@
       transform: translate(0, 0);
     }
     50% {
-      transform: translate(40%, 20%);
-    }
+      transform: translate(10%, 5%);
+    } /* Reduced movement range */
   }
 
-  @keyframes shine{
-    0% {
-      background-position: 100%
+  @keyframes shine {
+    from {
+      background-position: 100%;
     }
-    100% {
-      background-position: -100%
+    to {
+      background-position: -100%;
     }
   }
 
   @keyframes aurora {
-  from {
-    background-position: 50% 50%, 50% 50%;
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
+    }
   }
-  to {
-    background-position: 350% 50%, 350% 50%;
-  }
-}
 
   @keyframes aurora-2 {
     0%,
@@ -46,8 +47,8 @@
       transform: translate(0, 0);
     }
     50% {
-      transform: translate(-30%, -15%);
-    }
+      transform: translate(-10%, -5%);
+    } /* Reduced movement range */
   }
 
   @keyframes aurora-3 {
@@ -56,8 +57,8 @@
       transform: translate(0, 0);
     }
     50% {
-      transform: translate(25%, -25%);
-    }
+      transform: translate(5%, -10%);
+    } /* Reduced movement range */
   }
 }
 
@@ -178,6 +179,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-
-
